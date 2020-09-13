@@ -14,4 +14,4 @@ const updateRestaurant = (newRest) => {
   };
 };
 
-export { fetchData };
+export { addRestaurant, updateRestaurant };

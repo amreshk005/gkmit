@@ -55,7 +55,7 @@ const product = (state = initStore, action) => {
     case ADD_RESTAURANT:
       return {
         ...state,
-        isLoading: true,
+        restaurants: [...state.restaurants, action.newRest],
       };
 
     case UPDATE_RESTAURANT:

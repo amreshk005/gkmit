@@ -4,6 +4,7 @@ import { Table, Button } from "antd/es";
 import { StarFilled } from "@ant-design/icons";
 import { connect } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
+import { updateRestaurant } from "../../redux/action";
 
 class Restaurant extends Component {
   constructor(props) {
@@ -42,23 +43,25 @@ class Restaurant extends Component {
       data: [],
     };
   }
-  componentDidMount() {
-    console.log(this.props);
-    let restaurant = this.props.restaurants.map((e) => {
-      let item = {};
-      item.restaurant = e.restaurant;
-      item.hours = e.hours;
-      item.rating = e.rating;
-      item.viewDetail = [e.restaurant, "Show Menu"];
-      return item;
-    });
-    this.setState({
-      data: restaurant,
-    });
-    console.log(restaurant);
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    console.log(nextProps.restaurants);
+    if (nextProps.restaurants !== prevState.data) {
+      let restaurant = nextProps.restaurants.map((e) => {
+        let item = {};
+        item.restaurant = e.restaurant;
+        item.hours = e.hours;
+        item.rating = e.rating;
+        item.viewDetail = [e.restaurant, "Show Menu"];
+        return item;
+      });
+      return { data: restaurant };
+    }
+    return null;
   }
+
   render() {
-    console.log(this.props);
+    console.log(this.props.restaurants, this.state.data);
     return (
       <>
         <Table key={uuidv4()} columns={this.state.columns} dataSource={this.state.data} pagination={false} />

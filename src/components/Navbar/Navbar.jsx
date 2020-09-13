@@ -42,7 +42,7 @@ class Navbar extends Component {
             </Col>
             <Col style={{ paddingRight: "30px" }} span="col-8">
               <SideBar placement={placement} visible={visible} onClose={this.onClose} />
-              <Button onClick={this.showDrawer}>Add Restoraunt</Button>
+              <Button onClick={this.showDrawer}>Manage Restoraunt</Button>
             </Col>
           </Row>
         </Header>
