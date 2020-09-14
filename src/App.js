@@ -3,13 +3,11 @@ import "./App.css";
 import "antd/dist/antd.css";
 
 import Restaurant from "./components/Restaurant/Restaurant";
-import Admin from "./components/Admin/Admin";
 import Navbar from "./components/Navbar/Navbar";
 
 import { Route, Switch } from "react-router-dom";
 import { Layout } from "antd/es/";
 import MenuDetail from "./components/menuDetail/MenuDetail";
-import { connect } from "react-redux";
 const { Content } = Layout;
 
 class App extends React.Component {
