@@ -92,7 +92,7 @@ function UpdateForm(props) {
                     },
                   ]}
                 >
-                  <Input />
+                  <Input disabled />
                 </Form.Item>
                 <Form.Item
                   name="rating"
