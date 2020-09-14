@@ -50,6 +50,7 @@ class Restaurant extends Component {
         let item = {};
         item.restaurant = e.restaurant;
         item.hours = `${e.hours[0]} - ${e.hours[1]}`;
+        // item.hours = e.hours;
         item.rating = e.rating;
         item.viewDetail = [e.restaurant, "Show Menu"];
         return item;

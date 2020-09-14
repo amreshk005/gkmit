@@ -42,7 +42,7 @@ function UpdateForm(props) {
   }, [props.restaurants]);
 
   const onFinish = (values) => {
-    props.updateRestaurant({ ...values, hours: time });
+    props.updateRestaurant(values);
   };
 
   const updataFilter = (item) => {

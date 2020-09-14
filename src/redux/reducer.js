@@ -1,4 +1,4 @@
-import { ADD_RESTAURANT, HANDLE_AUTH, HANDLE_LOGIN, HANDLE_LOGOUT, UPDATE_RESTAURANT } from "./actionTypes";
+import { ADD_RESTAURANT, DELETE_RESTAURANT, HANDLE_AUTH, HANDLE_LOGIN, HANDLE_LOGOUT, UPDATE_RESTAURANT } from "./actionTypes";
 
 const initStore = {
   isLoading: false,
@@ -25,10 +25,22 @@ const product = (state = initStore, action) => {
       };
 
     case UPDATE_RESTAURANT:
-      let { restaurant } = action.newRest;
+      let { restaurant, rating, menuItem } = action.newRest;
+
+      let newUpdate = state.restaurants.map((e) => (restaurant === e.restaurant ? { ...e, rating: rating, menuItem: menuItem } : e));
+      console.log(newUpdate);
       return {
         ...state,
-        restaurants: state.restaurants.map((e) => (restaurant === e.restaurant ? action.newRest : e)),
+        restaurants: newUpdate,
+      };
+    case DELETE_RESTAURANT:
+      console.log(action.newRest.restaurant);
+
+      let deletedItem = state.restaurants.filter((e) => action.newRest.restaurant !== e.restaurant);
+      console.log(deletedItem);
+      return {
+        ...state,
+        restaurants: deletedItem,
       };
     case HANDLE_LOGIN:
       return {

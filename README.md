@@ -1,18 +1,13 @@
 # User Acitvity
 
-Take a Demo:- https://afinity.netlify.app/
+Take a Demo:- https://gkmit9608.herokuapp.com/
 
-![Image](https://i.imgur.com/JMkC8mm.jpg)
+![Image](https://i.imgur.com/hGxVwLZ.jpg)
 
-This is a Simple React App, where listing page is build for the showing the product list and filtering the items as according to your need and for the adding to cart you need to first login and after that you can your place order.
-
-## Authentication?
-
-`username:- amresh`<br>
-`password:- amresh`
+This is a Simple React App, where listing page is build for the showing the restaurant list and detail page to view the products.After the login admin can add restaurant and edit the exitisting restaurant and menu and can delete item.
 
 ## How to Setup?
 
-1. `git clone https://github.com/amreshk005/afinity.git`
+1. `git clone https://github.com/amreshk005/gkmit.git`
 2. `npm install`
 3. `npm start`

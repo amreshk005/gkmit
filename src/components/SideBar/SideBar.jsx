@@ -3,6 +3,7 @@ import { Drawer, Select } from "antd/es";
 
 import AddForm from "./Form/addForm";
 import UpdateForm from "./Form/updateForm";
+import DeleteForm from "./Form/DeleteForm";
 
 class SideBar extends Component {
   constructor(props) {
@@ -27,8 +28,9 @@ class SideBar extends Component {
           <Select showSearch placeholder="Select to Add/Update" onChange={this.handleChange}>
             <Option value="Add Product">Add Product</Option>
             <Option value="Update Product">Update Product</Option>
+            <Option value="Delete Product">Delete Product</Option>
           </Select>
-          {selected === "Add Product" ? <AddForm /> : selected === "Update Product" ? <UpdateForm /> : ""}
+          {selected === "Add Product" ? <AddForm /> : selected === "Update Product" ? <UpdateForm /> : selected === "Delete Product" ? <DeleteForm /> : ""}
         </Drawer>
       </>
     );

@@ -1,4 +1,4 @@
-import { ADD_RESTAURANT, UPDATE_RESTAURANT, HANDLE_LOGIN, HANDLE_LOGOUT } from "./actionTypes";
+import { ADD_RESTAURANT, UPDATE_RESTAURANT, HANDLE_LOGIN, HANDLE_LOGOUT, DELETE_RESTAURANT } from "./actionTypes";
 
 const addRestaurant = (newRest) => {
   return {
@@ -10,6 +10,12 @@ const addRestaurant = (newRest) => {
 const updateRestaurant = (newRest) => {
   return {
     type: UPDATE_RESTAURANT,
+    newRest: newRest,
+  };
+};
+const deleteRestaurant = (newRest) => {
+  return {
+    type: DELETE_RESTAURANT,
     newRest: newRest,
   };
 };
@@ -25,4 +31,4 @@ const handleLogout = () => {
   };
 };
 
-export { addRestaurant, updateRestaurant, handleLogin, handleLogout };
+export { addRestaurant, updateRestaurant, handleLogin, handleLogout, deleteRestaurant };
