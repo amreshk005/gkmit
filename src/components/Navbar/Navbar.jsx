@@ -3,7 +3,7 @@ import { Row, Col, Layout, PageHeader, Button } from "antd/es/";
 import { connect } from "react-redux";
 import SideBar from "../SideBar/SideBar";
 import { Link } from "react-router-dom";
-import { handleAuth } from "../../redux/action";
+import { handleLogin, handleLogout } from "../../redux/action";
 
 const { Header } = Layout;
 
@@ -17,6 +17,7 @@ class Navbar extends Component {
       LoggedIn: {},
     };
   }
+
   showDrawer = () => {
     this.setState({
       visible: true,
@@ -39,12 +40,12 @@ class Navbar extends Component {
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.LoggedIn !== prevState.LoggedIn) {
       let { username, isLoggedIn } = nextProps.LoggedIn;
-      console.log(nextProps.users);
+      console.log(username, isLoggedIn, "username, isLoggedIn");
       let getType = nextProps.users.find((e) => e.username == username);
       console.log(getType, "getType");
-      return getType.type === "admin" && isLoggedIn === true ? { auth: true, LoggedIn: getType } : "";
-      // return { data: restaurant };
+      return getType.type === "admin" && isLoggedIn === true ? { auth: true, LoggedIn: getType } : { auth: false, LoggedIn: getType };
     }
+
     return null;
   }
   render() {
@@ -65,11 +66,11 @@ class Navbar extends Component {
                   <SideBar placement={placement} visible={visible} onClose={this.onClose} />
                   <Row align="center" justify="space-between" style={{ marginTop: "12px" }}>
                     <Button onClick={this.showDrawer}>Manage Restoraunt</Button>
-                    <Button onClick={this.props.handleAuth}>Logout</Button>
+                    <Button onClick={this.props.handleLogout}>Logout</Button>
                   </Row>
                 </>
               ) : (
-                <div onClick={this.props.handleAuth}>Login</div>
+                <div onClick={this.props.handleLogin}>Login</div>
               )}
             </Col>
           </Row>
@@ -87,7 +88,8 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleAuth: () => dispatch(handleAuth()),
+    handleLogin: () => dispatch(handleLogin()),
+    handleLogout: () => dispatch(handleLogout()),
   };
 };
 

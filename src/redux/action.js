@@ -1,4 +1,4 @@
-import { ADD_RESTAURANT, UPDATE_RESTAURANT, HANDLE_AUTH } from "./actionTypes";
+import { ADD_RESTAURANT, UPDATE_RESTAURANT, HANDLE_LOGIN, HANDLE_LOGOUT } from "./actionTypes";
 
 const addRestaurant = (newRest) => {
   return {
@@ -13,10 +13,16 @@ const updateRestaurant = (newRest) => {
     newRest: newRest,
   };
 };
-const handleAuth = () => {
+const handleLogin = () => {
   return {
-    type: HANDLE_AUTH,
+    type: HANDLE_LOGIN,
   };
 };
 
-export { addRestaurant, updateRestaurant, handleAuth };
+const handleLogout = () => {
+  return {
+    type: HANDLE_LOGOUT,
+  };
+};
+
+export { addRestaurant, updateRestaurant, handleLogin, handleLogout };

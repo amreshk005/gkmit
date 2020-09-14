@@ -1,4 +1,4 @@
-import { ADD_RESTAURANT, HANDLE_AUTH, UPDATE_RESTAURANT } from "./actionTypes";
+import { ADD_RESTAURANT, HANDLE_AUTH, HANDLE_LOGIN, HANDLE_LOGOUT, UPDATE_RESTAURANT } from "./actionTypes";
 
 const initStore = {
   isLoading: false,
@@ -30,12 +30,20 @@ const product = (state = initStore, action) => {
         ...state,
         restaurants: state.restaurants.map((e) => (restaurant === e.restaurant ? action.newRest : e)),
       };
-    case HANDLE_AUTH:
+    case HANDLE_LOGIN:
       return {
         ...state,
         LoggedIn: {
           ...state.LoggedIn,
-          isLoggedIn: !state.LoggedIn.isLoggedIn,
+          isLoggedIn: true,
+        },
+      };
+    case HANDLE_LOGOUT:
+      return {
+        ...state,
+        LoggedIn: {
+          ...state.LoggedIn,
+          isLoggedIn: false,
         },
       };
 
