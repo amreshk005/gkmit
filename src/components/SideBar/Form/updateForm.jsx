@@ -107,9 +107,9 @@ function UpdateForm(props) {
                 >
                   <InputNumber />
                 </Form.Item>
-                <Form.Item name={"hours"} label="Hours">
+                {/* <Form.Item name={"hours"} label="Hours">
                   <RangePicker use12Hours format="h:mm a" onChange={onChange} />
-                </Form.Item>
+                </Form.Item> */}
                 <Form.List name="menuItem">
                   {(fields, { add, remove }) => {
                     return (
