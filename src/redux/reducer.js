@@ -1,4 +1,3 @@
-import Admin from "../components/Admin/Admin";
 import { ADD_RESTAURANT, HANDLE_AUTH, UPDATE_RESTAURANT } from "./actionTypes";
 
 const initStore = {
