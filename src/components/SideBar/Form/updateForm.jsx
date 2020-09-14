@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "antd/dist/antd.css";
 import { v4 as uuidv4 } from "uuid";
-import { Form, Input, InputNumber, Button, Layout, Menu, Space } from "antd";
+import { Form, Input, InputNumber, Button, Layout, Menu, Space, TimePicker } from "antd/es";
 import { MinusCircleOutlined, PlusOutlined, HomeFilled } from "@ant-design/icons";
 import { updateRestaurant } from "../../../redux/action";
 import { connect } from "react-redux";
 
 function UpdateForm(props) {
+  let { RangePicker } = TimePicker;
   const [form] = Form.useForm();
+  const [time, setTime] = useState("");
   const layout = {
     labelCol: {
       span: 8,
@@ -40,13 +42,16 @@ function UpdateForm(props) {
   }, [props.restaurants]);
 
   const onFinish = (values) => {
-    props.updateRestaurant(values);
+    props.updateRestaurant({ ...values, hours: time });
   };
 
   const updataFilter = (item) => {
     let getres = props.restaurants.find((e) => e.restaurant === item);
     form.setFieldsValue(getres);
   };
+  function onChange(time, timeString) {
+    setTime(timeString);
+  }
 
   return (
     <>
@@ -101,6 +106,9 @@ function UpdateForm(props) {
                   ]}
                 >
                   <InputNumber />
+                </Form.Item>
+                <Form.Item name={"hours"} label="Hours">
+                  <RangePicker use12Hours format="h:mm a" onChange={onChange} />
                 </Form.Item>
                 <Form.List name="menuItem">
                   {(fields, { add, remove }) => {

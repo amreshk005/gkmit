@@ -4,7 +4,6 @@ import { Table, Button } from "antd/es";
 import { StarFilled } from "@ant-design/icons";
 import { connect } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
-import { updateRestaurant } from "../../redux/action";
 
 class Restaurant extends Component {
   constructor(props) {
@@ -50,7 +49,7 @@ class Restaurant extends Component {
       let restaurant = nextProps.restaurants.map((e) => {
         let item = {};
         item.restaurant = e.restaurant;
-        item.hours = e.hours;
+        item.hours = `${e.hours[0]} - ${e.hours[1]}`;
         item.rating = e.rating;
         item.viewDetail = [e.restaurant, "Show Menu"];
         return item;
@@ -76,8 +75,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {};
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Restaurant);
+export default connect(mapStateToProps, null)(Restaurant);

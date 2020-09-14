@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../SideBar.css";
-import { Form, Input, Button, InputNumber, Space } from "antd/es";
+import { Form, Input, Button, InputNumber, Space, TimePicker } from "antd/es";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import { connect } from "react-redux";
 import { addRestaurant } from "../../../redux/action";
@@ -43,19 +43,28 @@ class AddForm extends Component {
         Quantity: undefined,
         price: undefined,
       },
+      time: "",
     };
   }
 
   onFinish = (values) => {
     console.log("Success:", values);
-    this.props.addRestaurant(values);
+    this.props.addRestaurant({ ...values, hours: this.state.time });
   };
 
   onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
 
+  onChange = (time, timeString) => {
+    console.log(time, timeString);
+    this.setState({
+      time: timeString,
+    });
+  };
+
   render() {
+    let { RangePicker } = TimePicker;
     return (
       <>
         <Form className="restaurant_add_form" {...this.state.layout} name="nest-messages" onFinish={this.onFinish} validateMessages={this.state.validateMessages}>
@@ -82,6 +91,10 @@ class AddForm extends Component {
             ]}
           >
             <InputNumber />
+          </Form.Item>
+
+          <Form.Item name={"hours"} label="Hours">
+            <RangePicker use12Hours format="h:mm a" onChange={this.onChange} />
           </Form.Item>
           <Form.List name="menuItem">
             {(fields, { add, remove }) => {

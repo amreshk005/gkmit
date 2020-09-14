@@ -1,4 +1,4 @@
-import { ADD_RESTAURANT, UPDATE_RESTAURANT } from "./actionTypes";
+import { ADD_RESTAURANT, UPDATE_RESTAURANT, HANDLE_AUTH } from "./actionTypes";
 
 const addRestaurant = (newRest) => {
   return {
@@ -13,5 +13,10 @@ const updateRestaurant = (newRest) => {
     newRest: newRest,
   };
 };
+const handleAuth = () => {
+  return {
+    type: HANDLE_AUTH,
+  };
+};
 
-export { addRestaurant, updateRestaurant };
+export { addRestaurant, updateRestaurant, handleAuth };

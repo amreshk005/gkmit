@@ -9,6 +9,7 @@ import Navbar from "./components/Navbar/Navbar";
 import { Route, Switch } from "react-router-dom";
 import { Layout } from "antd/es/";
 import MenuDetail from "./components/menuDetail/MenuDetail";
+import { connect } from "react-redux";
 const { Content } = Layout;
 
 class App extends React.Component {
@@ -23,6 +24,7 @@ class App extends React.Component {
   };
 
   render() {
+    console.log(this.props);
     return (
       <Layout className="site-layout">
         <Navbar />
@@ -36,21 +38,11 @@ class App extends React.Component {
           <Switch>
             <Route path="/" exact render={() => <Restaurant />} />
             <Route path="/menu" render={({ history }) => <MenuDetail history={history} />} />
-            <Route path="/admin" render={() => <Admin />} />
           </Switch>
         </Content>
       </Layout>
     );
   }
 }
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <Route path="/" render={() => <Restaurant />} />
-//       <Route path="/admin" render={() => <Admin />} />
-//     </div>
-//   );
-// }
 
 export default App;
