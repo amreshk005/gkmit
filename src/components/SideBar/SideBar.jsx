@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Drawer, Select } from "antd/es";
 
 import AddForm from "./Form/addForm";
+import UpdateForm from "./Form/updateForm";
 
 class SideBar extends Component {
   constructor(props) {
@@ -19,7 +20,7 @@ class SideBar extends Component {
   render() {
     const { Option } = Select;
     let getProps = this.props;
-    console.log(this.state.selected);
+    let { selected } = this.state;
     return (
       <>
         <Drawer title="Manage Restraunt" placement={getProps.placement} closable={true} onClose={getProps.onClose} visible={getProps.visible} key={getProps.placement} width={720}>
@@ -27,7 +28,7 @@ class SideBar extends Component {
             <Option value="Add Product">Add Product</Option>
             <Option value="Update Product">Update Product</Option>
           </Select>
-          {this.state.selected === "Add Product" ? <AddForm /> : ""}
+          {selected === "Add Product" ? <AddForm /> : selected === "Update Product" ? <UpdateForm /> : ""}
         </Drawer>
       </>
     );

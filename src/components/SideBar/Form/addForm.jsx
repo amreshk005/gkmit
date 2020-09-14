@@ -92,10 +92,10 @@ class AddForm extends Component {
                       <Form.Item {...field} name={[field.name, "foodName"]} fieldKey={[field.fieldKey, "foodName"]} rules={[{ required: true, message: "Missing food name" }]}>
                         <Input placeholder="Food Name" />
                       </Form.Item>
-                      <Form.Item {...field} name={[field.name, "Quantity"]} fieldKey={[field.fieldKey, "Quantity"]} rules={[{ type: "number", min: 0, max: 10, message: "please enter btw 0 to 10" }]}>
+                      <Form.Item {...field} name={[field.name, "Quantity"]} fieldKey={[field.fieldKey, "Quantity"]} rules={[{ type: "number", min: 0, max: 1000, message: "please enter btw 0 to 1000" }]}>
                         <InputNumber placeholder="Quantity" />
                       </Form.Item>
-                      <Form.Item {...field} name={[field.name, "price"]} fieldKey={[field.fieldKey, "price"]} rules={[{ type: "number", min: 0, max: 5, message: "please enter btw 0 to 5" }]}>
+                      <Form.Item {...field} name={[field.name, "price"]} fieldKey={[field.fieldKey, "price"]} rules={[{ type: "number", min: 0, max: 1000, message: "please enter btw 0 to 1000" }]}>
                         <InputNumber placeholder="Price" />
                       </Form.Item>
                       <MinusCircleOutlined

@@ -59,8 +59,10 @@ const product = (state = initStore, action) => {
       };
 
     case UPDATE_RESTAURANT:
+      let { restaurant } = action.newRest;
       return {
         ...state,
+        restaurants: state.restaurants.map((e) => (restaurant === e.restaurant ? action.newRest : e)),
       };
 
     default:
